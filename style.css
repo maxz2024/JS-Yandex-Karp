@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Soyuz Grotesk";
+    src: url(https://code.s3.yandex.net/pp-kids-web-course/020105/SoyuzGrotesk_Bold.woff) format(woff), 
+    url(https://code.s3.yandex.net/pp-kids-web-course/020105/SoyuzGrotesk_Bold.otf) format(opentype);
+    font-weight: 700;
+    font-style: normal;
+    display: swap;
+}
+
+
+body {
+    padding: 0;
+}
+
+#heroesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1240px;
+    gap: 40px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #001520;
+    border-radius: 5px;
+    font-family: "Soyuz Grotesk", sans-serif;
+    font-weight: 700;
+}
