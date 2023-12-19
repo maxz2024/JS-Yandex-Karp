@@ -22,8 +22,10 @@ function addHero() {
 
     let nameInput = document.getElementById("heroName");
     let classInput = document.getElementById("heroClass");
-
-    heroes.push([nameInput.value,classInput.value]);
+    if (nameInput != "" && classInput	 != "") {
+       heroes.push([nameInput.value,classInput.value]);
+    }
+    else { let error = document.createElement("p"); error.innerHTML = "Ошибка"; document.body.appendChild(error); }
 
     displayHeroes();
 
