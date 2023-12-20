@@ -4,6 +4,7 @@ let nameInput = document.getElementById("heroName");
 let classInput = document.getElementById("heroClass");
 
 let heroes = [["Axe", "Tank"], ["Crystal Maiden", "Support"]];
+let timer;
 
 function displayHeroes() {
 
@@ -16,10 +17,14 @@ function displayHeroes() {
         let heroDiv = document.createElement("div");
 
         heroDiv.className = "heroCard"
+        if (heroes[i]){
+            heroDiv.innerHTML = `<h3>${heroes[i][0]}</h3><p>${heroes[i][1]}</p><button id="deleteButton" data-idcard="${i}"><img src="trash.png"></button>`;
+        
+            heroesContainer.appendChild(heroDiv);
+            let deleteButton = heroesContainer.querySelector(`[data-idcard="${i}"]`)
+            deleteButton.addEventListener("click", function () {delete heroes[deleteButton.dataset.idcard]; displayHeroes()})
+        }
 
-        heroDiv.innerHTML = `<h3>${heroes[i][0]}</h3><p>${heroes[i][1]}</p>`;
-
-        heroesContainer.appendChild(heroDiv);
     }
 }
 
@@ -54,10 +59,20 @@ function check(event) {
         let error = document.getElementById("error");
         error.innerHTML = "Ошибка. Поля пустые.";
     }
+    timer = setTimeout(check,2000);
+    
 }
 
-// Хотел написать setTimeout, но это работает не правильно. Подскажите как можно сделать?
-button.onmouseover = check;
+button.onmouseover = function () {
+    timer = setTimeout(check,2000);
+}
+button.onmouseout = function () {
+    clearTimeout(timer)
+}
+
+// nameInput.oninput = function() {
+//     check();
+// };
 
 document.getElementById("addButton").addEventListener("click", addHero);
 
